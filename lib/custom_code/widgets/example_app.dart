@@ -12,8 +12,6 @@ import 'dart:async';
 import 'package:poly_geofence_service/poly_geofence_service.dart';
 import 'package:poly_geofence_service/poly_geofence_service.dart' as geofence;
 
-void main() => runApp(const ExampleApp());
-
 class ExampleApp extends StatefulWidget {
   const ExampleApp(
       {Key? key, this.width, this.height, this.geofence1, this.geofence2})
@@ -38,81 +36,6 @@ class _ExampleAppState extends State<ExampleApp> {
       statusChangeDelayMs: 10000,
       allowMockLocations: false,
       printDevLog: false);
-
-  // Create a [PolyGeofence] list.
-  // final _polyGeofenceList = <PolyGeofence>[
-  //   PolyGeofence(
-  //     id: 'park1',
-  //     data: {
-  //       'about': 'Park #1',
-  //     },
-  //     polygon: <geofence.LatLng>[
-  //       const geofence.LatLng(52.04304, -0.746968),
-  //       const geofence.LatLng(52.04286, -0.747408),
-  //       const geofence.LatLng(52.0429, -0.747454),
-  //       const geofence.LatLng(52.04132, -0.751141),
-  //       const geofence.LatLng(52.04004, -0.749702),
-  //       const geofence.LatLng(52.04028, -0.749138),
-  //       const geofence.LatLng(52.04065, -0.749569),
-  //       const geofence.LatLng(52.04068, -0.749614),
-  //       const geofence.LatLng(52.04069, -0.749940),
-  //       const geofence.LatLng(52.04063, -0.750076),
-  //       const geofence.LatLng(52.04089, -0.750373),
-  //       const geofence.LatLng(52.04095, -0.750237),
-  //       const geofence.LatLng(52.04114, -0.750153),
-  //       const geofence.LatLng(52.04118, -0.750162),
-  //       const geofence.LatLng(52.04148, -0.750496),
-  //       const geofence.LatLng(52.04174, -0.749874),
-  //       const geofence.LatLng(52.0417, -0.749826),
-  //       const geofence.LatLng(52.04209, -0.748882),
-  //       const geofence.LatLng(52.04219, -0.748504),
-  //       const geofence.LatLng(52.04231, -0.747969),
-  //       const geofence.LatLng(52.04236, -0.747617),
-  //       const geofence.LatLng(52.0425, -0.746996),
-  //       const geofence.LatLng(52.04268, -0.746566),
-  //       const geofence.LatLng(52.04225, -0.746084),
-  //       const geofence.LatLng(52.04212, -0.746400),
-  //       const geofence.LatLng(52.04202, -0.746452),
-  //       const geofence.LatLng(52.04186, -0.746694),
-  //       const geofence.LatLng(52.04159, -0.747033),
-  //       const geofence.LatLng(52.04145, -0.747203),
-  //       const geofence.LatLng(52.04129, -0.747326),
-  //       const geofence.LatLng(52.04109, -0.747755),
-  //       const geofence.LatLng(52.04094, -0.747591),
-  //       const geofence.LatLng(52.04179, -0.745637),
-  //       const geofence.LatLng(52.04182, -0.745676),
-  //       const geofence.LatLng(52.04185, -0.745624),
-  //     ],
-  //   ),
-  //   PolyGeofence(
-  //     id: 'park2',
-  //     data: {
-  //       'about': 'Park #2',
-  //     },
-  //     polygon: <geofence.LatLng>[
-  //       const geofence.LatLng(52.04108, -0.751603),
-  //       const geofence.LatLng(52.03987, -0.750246),
-  //       const geofence.LatLng(52.0399, -0.750178),
-  //       const geofence.LatLng(52.03987, -0.750136),
-  //       const geofence.LatLng(52.04001, -0.749784),
-  //       const geofence.LatLng(52.04005, -0.749828),
-  //       const geofence.LatLng(52.03999, -0.749977),
-  //       const geofence.LatLng(52.04126, -0.751373),
-  //       const geofence.LatLng(52.04217, -0.749251),
-  //       const geofence.LatLng(52.04246, -0.748582),
-  //       const geofence.LatLng(52.04293, -0.747486),
-  //       const geofence.LatLng(52.04301, -0.747581),
-  //       const geofence.LatLng(52.04307, -0.747435),
-  //       const geofence.LatLng(52.04311, -0.747485),
-  //       const geofence.LatLng(52.04258, -0.748717),
-  //       const geofence.LatLng(52.04246, -0.748586),
-  //       const geofence.LatLng(52.04217, -0.749257),
-  //       const geofence.LatLng(52.0423, -0.749399),
-  //       const geofence.LatLng(52.04138, -0.751510),
-  //       const geofence.LatLng(52.0412, -0.751316),
-  //     ],
-  //   ),
-  // ];
 
   Location _currentLocation =
       new Location.fromJson({'latitude': 0.0, 'longitude': 0.0});
@@ -183,43 +106,28 @@ class _ExampleAppState extends State<ExampleApp> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(
-          textTheme: TextTheme(
-        bodyText1: TextStyle(fontSize: 42.0),
-        bodyText2: TextStyle(fontSize: 42.0),
-      )),
-      // A widget used when you want to start a foreground task when trying to minimize or close the app.
-      // Declare on top of the [Scaffold] widget.
-      home: WillStartForegroundTask(
-        onWillStart: () async {
-          // You can add a foreground task start condition.
-          return _polyGeofenceService.isRunningService;
-        },
-        androidNotificationOptions: AndroidNotificationOptions(
-          channelId: 'geofence_service_notification_channel',
-          channelName: 'Geofence Service Notification',
-          channelDescription:
-              'This notification appears when the geofence service is running in the background.',
-          channelImportance: NotificationChannelImportance.LOW,
-          priority: NotificationPriority.LOW,
-          isSticky: false,
-        ),
-        iosNotificationOptions: const IOSNotificationOptions(),
-        foregroundTaskOptions: const ForegroundTaskOptions(
-          interval: 5000,
-          autoRunOnBoot: true,
-        ),
-        notificationTitle: 'Geofence Service is running',
-        notificationText: 'Tap to return to the app',
-        child: Scaffold(
-          // appBar: AppBar(
-          //  title: const Text('Poly Geofence Demo for Colin'),
-          //  centerTitle: true,
-          //),
-          body: _buildContentView(),
-        ),
+    return WillStartForegroundTask(
+      onWillStart: () async {
+        // You can add a foreground task start condition.
+        return _polyGeofenceService.isRunningService;
+      },
+      androidNotificationOptions: AndroidNotificationOptions(
+        channelId: 'geofence_service_notification_channel',
+        channelName: 'Geofence Service Notification',
+        channelDescription:
+            'This notification appears when the geofence service is running in the background.',
+        channelImportance: NotificationChannelImportance.LOW,
+        priority: NotificationPriority.LOW,
+        isSticky: false,
       ),
+      iosNotificationOptions: const IOSNotificationOptions(),
+      foregroundTaskOptions: const ForegroundTaskOptions(
+        interval: 5000,
+        autoRunOnBoot: true,
+      ),
+      notificationTitle: 'Geofence Service is running',
+      notificationText: 'Tap to return to the app',
+      child: _buildContentView(),
     );
   }
 
@@ -264,9 +172,8 @@ class _ExampleAppState extends State<ExampleApp> {
         double speedMps = _currentLocation.speed;
         double speedMph = speedMps * 2.23694; // Convert m/s to mph
 
-        return ListView(
-          physics: const BouncingScrollPhysics(),
-          padding: const EdgeInsets.all(8.0),
+        return Column(
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Text(
               '•\t\tPolyGeofence (updated: $updatedDateTime)',
